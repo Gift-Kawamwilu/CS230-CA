@@ -156,7 +156,7 @@
                 if (jsonData.length > 0) {
                     var studentData = jsonData.slice(1).find(row => {
                         // CHANGE THIS DEPENDING ON THE ORDER OF THE EXCEL 
-                        var SIN = row[1].toString();
+                        var SIN = row[2].toString();
                         console.log(typeof(SIN));
                         return  SIN === studentInput; /* || row[1].toString().toLowerCase() === studentInput; */
                         
