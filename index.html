@@ -156,7 +156,7 @@
                 if (jsonData.length > 0) {
                     var studentData = jsonData.slice(1).find(row => {
                         // CHANGE THIS DEPENDING ON THE ORDER OF THE EXCEL 
-                        var SIN = row[2].toString();
+                        var SIN = row[1].toString();
                         console.log(typeof(SIN));
                         return  SIN === studentInput; /* || row[1].toString().toLowerCase() === studentInput; */
                         
@@ -168,7 +168,7 @@
                         var quiz1 = parseFloat(studentData[7]);
                         var quiz2 = parseFloat(studentData[8]);
                         var ca = parseFloat(studentData[11]);
-                        var assignment = parseFloat(studentData[9]);
+                        var assignment = parseFloat(studentData[11]);
 
                         // Calculate CA
                        // var ca = ((test1 / 70) * 10) + ((test2 / 70) * 10) + ((quiz1 / 26) * 6) + ((quiz2 / 5) * 2) + ((assignment / 50) * 12);
