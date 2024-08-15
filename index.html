@@ -112,7 +112,7 @@
             <label for="studentInput">Enter your SIN</label>
             <input type="text" id="studentInput" placeholder="Search by name or SIN" required>
         </div>
-        <button type="submit">Calculate CA</button>
+        <button type="submit">Show CA</button>
         <div id="result"></div>
         <div id="excelData"></div> <!-- Display data from Excel here -->
     </form>
@@ -141,6 +141,7 @@
                             jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
                         };
                         reader.readAsArrayBuffer(data);
+                        console.log(data);
                     },
                     error: function () {
                         alert("Failed to load the Excel file. Please ensure the file is correctly named and available.");
@@ -156,20 +157,21 @@
                 if (jsonData.length > 0) {
                     var studentData = jsonData.slice(1).find(row => {
                         // CHANGE THIS DEPENDING ON THE ORDER OF THE EXCEL 
-                        var SIN = row[2].toString();
+                        var SIN = row[1].toString();
                         console.log(typeof(SIN));
                         return  SIN === studentInput; /* || row[1].toString().toLowerCase() === studentInput; */
                         
                     });
 
                     if (studentData) {
-                        var test1 = parseFloat(studentData[5]);
-                        var test2 = parseFloat(studentData[6]);
+                        var test1 = parseFloat(studentData[2]);
+                        var test2 = parseFloat(studentData[3]);
                         var quiz1 = parseFloat(studentData[7]);
                         var quiz2 = parseFloat(studentData[8]);
-                        var assignment1 = parseFloat(studentData[9]);
-                        var assignment2 = parseFloat(studentData[10]);
-                        var TOTAL = parseFloat(studentData[12]);
+                        var quiz3 = parseFloat(studentData[9]);
+                        var assignment1 = parseFloat(studentData[4]);
+                        var assignment2 = parseFloat(studentData[5]);
+                        var ca = parseInt(studentData[11]);
                         
 
                         // Calculate CA
